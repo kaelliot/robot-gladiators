@@ -7,6 +7,31 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+// function to start a new game
+var startGame = function() {
+    // reset player stats
+    playerHealth = 100;
+    playerAttack = 10;
+    playerMoney = 10;
+      
+    // other logic remains the same...
+    };
+    for (var i = 0; i < enemyNames.length; i++) {
+      if (playerHealth > 0) {
+        window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
+  
+        var pickedEnemyName = enemyNames[i];
+  
+        enemyHealth = 50;
+  
+        fight(pickedEnemyName);
+      }
+      else {
+        window.alert("You have lost your robot in battle! Game Over!");
+        break;
+      }
+    }
+  };
 var fight = function (enemyNames) {
     while (playerHealth > 0 && enemyHealth > 0) {
         // ask user if they'd like to fight or run
@@ -53,6 +78,26 @@ var fight = function (enemyNames) {
         );
 
         // check player's health
+        if (playerHealth > 0) {
+            // let user know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
+            window.alert("Welcome to Robot Gladiators! Round " + ( i + 1 ) );
+
+            // pick new enemy to fight based on the index of the enemyNames array
+            var pickedEnemyName = enemyNames[i];
+
+            // reset enemyHealth before starting new fight
+            enemyHealth = 50;
+
+            // use debugger to pause script from running and check what's going on at that moment in the code
+            // debugger;
+
+            // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
+            fight(pickedEnemyName);
+        }
+        else {
+            window.alert("You have lost your robot in battle! Game Over!");
+            break;
+        }
         if (playerHealth <=0) {
             window.alert(playerName + " has died!");
             // leave while() loop if player is dead
@@ -67,3 +112,5 @@ for(var i = 0; i < enemyNames.length; i++) {
     enemyHealth = 50;
     fight(pickedEnemyName);
 }
+// start the game when the page loads
+startGame();
